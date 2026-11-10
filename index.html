@@ -400,8 +400,8 @@ function fsBackend(fs, W) {
   const mapCh = sn => sn.docChanges().map(c => ({ type: c.type, id: c.doc.id, data: c.doc.data() }));
   return {
     live: true,
-    subBoards(cb, err) { return fs.collection(`${root}/boards`).onSnapshot(sn => cb(mapCh(sn), sn.metadata), e => err && err(normErr(e))); },
-    subItems(b, cb, err) { return fs.collection(`${root}/boards/${b}/items`).onSnapshot(sn => cb(mapCh(sn), sn.metadata), e => err && err(normErr(e))); },
+    subBoards(cb, err) { return fs.collection(`${root}/boards`).onSnapshot({ includeMetadataChanges: true }, sn => cb(mapCh(sn), sn.metadata), e => err && err(normErr(e))); },
+    subItems(b, cb, err) { return fs.collection(`${root}/boards/${b}/items`).onSnapshot({ includeMetadataChanges: true }, sn => cb(mapCh(sn), sn.metadata), e => err && err(normErr(e))); },
     getItems(b) { return fs.collection(`${root}/boards/${b}/items`).get().then(sn => sn.docs.map(d => [d.id, d.data()])); },
     setItem: (b, i, d) => iref(b, i).set(d).catch(e => { throw normErr(e); }),
     updItem: (b, i, d) => iref(b, i).update(d).catch(e => { throw normErr(e); }),
