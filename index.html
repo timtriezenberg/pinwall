@@ -91,9 +91,9 @@ button{font:inherit;color:inherit}
 #lines .rubber{stroke:var(--accent);stroke-dasharray:4 4;fill:none;stroke-width:1.5}
 #marquee{position:absolute;border:1px solid var(--accent);background:var(--accent-soft);pointer-events:none;z-index:30;border-radius:2px}
 #cursors{position:absolute;inset:0;pointer-events:none;z-index:25}
-.cur{position:absolute;left:0;top:0;transition:transform .08s linear}
-.cur svg{width:16px;height:16px;display:block}
-.cur span{display:inline-block;margin:1px 0 0 12px;padding:2px 7px;border-radius:4px;color:#fff;font-size:11px;font-weight:600;white-space:nowrap}
+.rcur{position:absolute;left:0;top:0;transition:transform .08s linear}
+.rcur svg{width:16px;height:16px;display:block}
+.rcur span{display:inline-block;margin:1px 0 0 12px;padding:2px 7px;border-radius:4px;color:#fff;font-size:11px;font-weight:600;white-space:nowrap}
 /* cards */
 .card{position:absolute;background:var(--card);color:var(--ink);border-radius:3px;box-shadow:var(--shadow);min-width:120px;user-select:none;-webkit-user-select:none;transition:box-shadow .15s}
 .card:hover{box-shadow:0 2px 8px rgba(20,22,28,.08),0 0 0 1px var(--edge)}
@@ -249,7 +249,7 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px}
   #crumbs button{max-width:110px}
   .opt{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){.cur,.bar i,.card,.tool,.t-board .bx{transition:none}.card.dragging{transform:none}}
+@media (prefers-reduced-motion:reduce){.rcur,.bar i,.card,.tool,.t-board .bx{transition:none}.card.dragging{transform:none}}
 #nameCard{position:absolute;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));background:var(--card);border-radius:10px;box-shadow:var(--pop);padding:12px;z-index:23;display:grid;gap:8px;width:min(280px,calc(100% - 28px))}
 #nameCard b{font-size:13px}
 #nameCard .r{display:flex;gap:6px}
