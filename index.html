@@ -1088,7 +1088,7 @@ function setReadOnly(ro) {
 }
 
 /* ---------- presence ---------- */
-const CID = uid();
+let CID = uid();
 let presT = 0, presKey = '', presBeat = 0;
 function sendPresence() {
   if (!S.fs || !S.W) return;
@@ -1460,6 +1460,7 @@ async function boot() {
   S.W = p.w;
   S.me = lsGet('pinwall-me') || { id: uid(), name: '', color: PALETTE[Math.floor(Math.random() * PALETTE.length)] };
   lsSet('pinwall-me', S.me);
+  CID = String(S.me.id).replace(/[^A-Za-z0-9]/g, '') || CID;
   if (!S.me.name) $('#nameCard').hidden = false;
   if (window.firebase && firebase.initializeApp) {
     firebase.initializeApp(FIREBASE);
